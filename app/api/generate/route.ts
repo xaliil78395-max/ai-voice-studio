@@ -48,12 +48,15 @@ export async function POST(request: NextRequest) {
 
     const projectRoot = process.cwd();
 
-    const pythonPath = path.join(
-      projectRoot,
-      "voice-env",
-      "Scripts",
-      "python.exe",
-    );
+    const pythonPath =
+      process.platform === "win32"
+        ? path.join(
+            projectRoot,
+            "voice-env",
+            "Scripts",
+            "python.exe",
+          )
+        : "/opt/voice-env/bin/python";
 
     const scriptPath = path.join(
       projectRoot,
@@ -189,3 +192,4 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
