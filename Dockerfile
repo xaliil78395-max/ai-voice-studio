@@ -1,4 +1,4 @@
-FROM node:22-bookworm
+﻿FROM node:22-bookworm
 
 ENV NODE_ENV=production
 ENV PYTHONUNBUFFERED=1
@@ -31,7 +31,9 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build
+RUN npm run build && \
+    cp -r public .next/standalone/public && \
+    cp -r .next/static .next/standalone/.next/static
 
 EXPOSE 3000
 
