@@ -255,35 +255,15 @@ const languages = [
     name: "Portuguese",
     code: "pt-PT",
     voices: [
-      ["pf_dora", "Dora — Female"],
-      ["pm_alex", "Alex — Male"],
-      ["pm_santa", "Santa — Male"],
+      ["pt-BR-FranciscaNeural", "Dora — Female"],
+      ["pt-BR-AntonioNeural", "Alex — Male"],
+      ["pt-PT-DuarteNeural", "Santa — Male"],
     ],
   },
 ];
 
 
-function isKokoroVoice(voice: string) {
-  return (
-    voice.startsWith("af_") ||
-    voice.startsWith("am_") ||
-    voice.startsWith("bf_") ||
-    voice.startsWith("bm_") ||
-    voice.startsWith("ef_") ||
-    voice.startsWith("em_") ||
-    voice.startsWith("ff_") ||
-    voice.startsWith("hf_") ||
-    voice.startsWith("hm_") ||
-    voice.startsWith("if_") ||
-    voice.startsWith("im_") ||
-    voice.startsWith("jf_") ||
-    voice.startsWith("jm_") ||
-    voice.startsWith("pf_") ||
-    voice.startsWith("pm_") ||
-    voice.startsWith("zf_") ||
-    voice.startsWith("zm_")
-  );
-}
+
 
 export default function Home() {
   const [text, setText] = useState("");
@@ -691,4 +671,6 @@ export default function Home() {
     </main>
   );
 }
+
+
 

@@ -1,5 +1,6 @@
 ﻿import { NextRequest } from "next/server";
 import { spawn } from "child_process";
+import { existsSync } from "fs";
 import { readFile, readdir, unlink } from "fs/promises";
 import path from "path";
 
@@ -22,17 +23,17 @@ export async function POST(request: NextRequest) {
     const voice =
       typeof body.voice === "string"
         ? body.voice
-        : "af_heart";
+        : "en-US-AvaNeural";
 
     const language =
       typeof body.language === "string"
         ? body.language
-        : "a";
+        : "en-US";
 
     if (!text) {
       return Response.json(
         { error: "Text is required." },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -42,11 +43,17 @@ export async function POST(request: NextRequest) {
           error:
             "Text is too long. Maximum is 5000 characters.",
         },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
-    const projectRoot = process.cwd();
+    const projectRoot =
+      process.platform === "win32" &&
+      process.cwd().endsWith(
+        path.join(".next", "standalone")
+      )
+        ? path.resolve(process.cwd(), "..", "..")
+        : process.cwd();
 
     const pythonPath =
       process.platform === "win32"
@@ -54,23 +61,45 @@ export async function POST(request: NextRequest) {
             projectRoot,
             "voice-env",
             "Scripts",
-            "python.exe",
+            "python.exe"
           )
         : "/opt/voice-env/bin/python";
 
     const scriptPath = path.join(
       projectRoot,
       "scripts",
-      "generate_voice.py",
+      "generate_voice.py"
     );
 
     const generatedDir = path.join(
       projectRoot,
-      "generated",
+      "generated"
     );
 
+    console.log("=== VOICE DEBUG ===");
+    console.log("CWD:", process.cwd());
+    console.log("PROJECT ROOT:", projectRoot);
+    console.log("PYTHON:", pythonPath);
+    console.log("PYTHON EXISTS:", existsSync(pythonPath));
+    console.log("PYVENV:", path.join(
+      projectRoot,
+      "voice-env",
+      "pyvenv.cfg"
+    ));
+    console.log("PYVENV EXISTS:", existsSync(
+      path.join(
+        projectRoot,
+        "voice-env",
+        "pyvenv.cfg"
+      )
+    ));
+    console.log("SCRIPT:", scriptPath);
+    console.log("SCRIPT EXISTS:", existsSync(scriptPath));
+    console.log("GENERATED DIR:", generatedDir);
+    console.log("===================");
+
     const generatedBefore = new Set(
-      await readdir(generatedDir).catch(() => []),
+      await readdir(generatedDir).catch(() => [])
     );
 
     await new Promise<void>((resolve, reject) => {
@@ -86,51 +115,60 @@ export async function POST(request: NextRequest) {
         {
           cwd: projectRoot,
           windowsHide: true,
-        },
+          env: {
+            ...process.env,
+            PYTHONUNBUFFERED: "1",
+          },
+        }
       );
 
       let stdout = "";
       let stderr = "";
 
       child.stdout.on("data", (data) => {
-        stdout += data.toString();
-        console.log(data.toString());
+        const output = data.toString();
+        stdout += output;
+        console.log(output);
       });
 
       child.stderr.on("data", (data) => {
-        stderr += data.toString();
-        console.error(data.toString());
+        const output = data.toString();
+        stderr += output;
+        console.error(output);
       });
 
-      child.on("error", reject);
+      child.on("error", (error) => {
+        reject(error);
+      });
 
       child.on("close", (code) => {
         if (code === 0) {
           resolve();
-        } else {
-          reject(
-            new Error(
-              stderr ||
-                stdout ||
-                `Python exited with code ${code}`,
-            ),
-          );
+          return;
         }
+
+        reject(
+          new Error(
+            stderr ||
+              stdout ||
+              `Python exited with code ${code}`
+          )
+        );
       });
     });
 
     const generatedFiles = await readdir(generatedDir);
 
     const newFiles = generatedFiles.filter(
-      (file) => !generatedBefore.has(file),
+      (file) => !generatedBefore.has(file)
     );
 
     const wavFile = newFiles.find((file) =>
-      file.toLowerCase().endsWith(".wav"),
+      file.toLowerCase().endsWith(".wav")
     );
 
     const mp3File = newFiles.find((file) =>
-      file.toLowerCase().endsWith(".mp3"),
+      file.toLowerCase().endsWith(".mp3")
     );
 
     if (!wavFile) {
@@ -139,13 +177,13 @@ export async function POST(request: NextRequest) {
           error:
             "Voice generation completed but WAV file was not found.",
         },
-        { status: 500 },
+        { status: 500 }
       );
     }
 
     const wavPath = path.join(
       generatedDir,
-      wavFile,
+      wavFile
     );
 
     const wavBuffer = await readFile(wavPath);
@@ -155,7 +193,7 @@ export async function POST(request: NextRequest) {
     if (mp3File) {
       const mp3Path = path.join(
         generatedDir,
-        mp3File,
+        mp3File
       );
 
       mp3Buffer = await readFile(mp3Path);
@@ -177,7 +215,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error(
       "Voice generation error:",
-      error,
+      error
     );
 
     return Response.json(
@@ -188,8 +226,7 @@ export async function POST(request: NextRequest) {
             ? error.message
             : "Unknown error",
       },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
-

@@ -13,9 +13,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-venv \
     python3-pip \
     ffmpeg \
-    espeak-ng \
-    libsndfile1 \
-    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m venv /opt/voice-env
@@ -23,7 +20,7 @@ RUN python3 -m venv /opt/voice-env
 ENV PATH="/opt/voice-env/bin:$PATH"
 
 RUN pip install --upgrade pip setuptools wheel && \
-    pip install kokoro soundfile numpy edge-tts
+    pip install edge-tts
 
 COPY package*.json ./
 
