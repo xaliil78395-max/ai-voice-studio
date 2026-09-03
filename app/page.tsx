@@ -35,10 +35,10 @@ const languages = [
     name: "English (UK)",
     code: "en-GB",
     voices: [
-      ["bf_alice", "Alice — Female"],
-      ["bf_emma", "Emma — Female"],
-      ["bf_isabella", "Isabella — Female"],
-      ["bf_lily", "Lily — Female"],
+      ["en-US-AvaNeural", "Alice — Female"],
+      ["en-US-EmmaNeural", "Emma — Female"],
+      ["en-US-IsabellaNeural", "Isabella — Female"],
+      ["en-US-JennyNeural", "Lily — Female"],
       ["bm_daniel", "Daniel — Male"],
       ["bm_fable", "Fable — Male"],
       ["bm_george", "George — Male"],
@@ -671,6 +671,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
