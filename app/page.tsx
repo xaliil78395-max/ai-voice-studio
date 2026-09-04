@@ -600,14 +600,7 @@ export default function Home() {
 
         </div>
 
-        <div className="mt-5 flex min-h-[90px] items-center justify-center overflow-hidden rounded-3xl border border-zinc-200 bg-white p-4 shadow-sm">
-          <div id="container-fee6fb2abfb21ba7eb3a8abb2cd2df41"></div>
-          <Script
-            src="https://pl31175675.profitableratecpmnetwork.com/fee6fb2abfb21ba7eb3a8abb2cd2df41/invoke.js"
-            strategy="afterInteractive"
-            data-cfasync="false"
-          />
-        </div>
+        
 
         <section className="mt-5 rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm sm:p-6">
 
@@ -672,6 +665,15 @@ export default function Home() {
 
       </section>
 
+<div className="mt-5 flex min-h-[90px] items-center justify-center overflow-hidden rounded-3xl border border-zinc-200 bg-white p-4 shadow-sm">
+          <div id="container-fee6fb2abfb21ba7eb3a8abb2cd2df41"></div>
+          <Script
+            src="https://pl31175675.profitableratecpmnetwork.com/fee6fb2abfb21ba7eb3a8abb2cd2df41/invoke.js"
+            strategy="afterInteractive"
+            data-cfasync="false"
+          />
+        </div>
+
       <div className="mt-5 flex justify-center">
         <a href="https://www.profitableratecpmnetwork.com/skty0vd8fb?key=0b3cb207f242d949e91d404ab2140680" target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-zinc-400 transition hover:text-zinc-700">
           Explore more
@@ -699,6 +701,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
