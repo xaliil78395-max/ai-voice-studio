@@ -7,15 +7,15 @@ const languages = [
     name: "English (US)",
     code: "en-US",
     voices: [
-      ["af_bella", "Bella — Female"],
-      ["af_heart", "Heart — Female"],
-      ["af_jessica", "Jessica — Female"],
-      ["af_nicole", "Nicole — Female"],
-      ["af_nova", "Nova — Female"],
-      ["af_sarah", "Sarah — Female"],
-      ["am_adam", "Adam — Male"],
-      ["am_michael", "Michael — Male"],
-      ["am_onyx", "Onyx — Male"],
+      ["en-US-AvaNeural", "Bella — Female"],
+      ["en-US-EmmaNeural", "Heart — Female"],
+      ["en-US-AriaNeural", "Jessica — Female"],
+      ["en-US-MichelleNeural", "Nicole — Female"],
+      ["en-US-JennyNeural", "Nova — Female"],
+      ["en-US-AvaMultilingualNeural", "Sarah — Female"],
+      ["en-US-AndrewNeural", "Adam — Male"],
+      ["en-US-BrianNeural", "Michael — Male"],
+      ["en-US-GuyNeural", "Onyx — Male"],
       ["en-US-AvaNeural", "Ava — Female"],
       ["en-US-EmmaNeural", "Emma — Female"],
       ["en-US-AriaNeural", "Aria — Female"],
@@ -37,12 +37,12 @@ const languages = [
     voices: [
       ["en-US-AvaNeural", "Alice — Female"],
       ["en-US-EmmaNeural", "Emma — Female"],
-      ["en-US-IsabellaNeural", "Isabella — Female"],
+      ["en-US-AriaNeural", "Isabella — Female"],
       ["en-US-JennyNeural", "Lily — Female"],
-      ["bm_daniel", "Daniel — Male"],
-      ["bm_fable", "Fable — Male"],
-      ["bm_george", "George — Male"],
-      ["bm_lewis", "Lewis — Male"],
+      ["en-GB-RyanNeural", "Daniel — Male"],
+      ["en-GB-ThomasNeural", "Fable — Male"],
+      ["en-GB-RyanNeural", "George — Male"],
+      ["en-GB-ThomasNeural", "Lewis — Male"],
       ["en-GB-LibbyNeural", "Libby — Female"],
       ["en-GB-MaisieNeural", "Maisie — Female"],
       ["en-GB-SoniaNeural", "Sonia — Female"],
@@ -94,7 +94,7 @@ const languages = [
     name: "French",
     code: "fr-FR",
     voices: [
-      ["ff_siwis", "Siwis — Female"],
+      ["fr-FR-EloiseNeural", "Siwis — Female"],
       ["fr-FR-DeniseNeural", "Denise — Female"],
       ["fr-FR-EloiseNeural", "Eloise — Female"],
       ["fr-FR-HenriNeural", "Henri — Male"],
@@ -113,9 +113,9 @@ const languages = [
     name: "Spanish",
     code: "es-ES",
     voices: [
-      ["ef_dora", "Dora — Female"],
-      ["em_alex", "Alex — Male"],
-      ["em_santa", "Santa — Male"],
+      ["es-ES-ElviraNeural", "Dora — Female"],
+      ["es-ES-AlvaroNeural", "Alex — Male"],
+      ["es-MX-JorgeNeural", "Santa — Male"],
       ["es-ES-XimenaNeural", "Ximena — Spain — Female"],
       ["es-ES-AlvaroNeural", "Alvaro — Spain — Male"],
       ["es-ES-ElviraNeural", "Elvira — Spain — Female"],
@@ -153,8 +153,8 @@ const languages = [
     name: "Italian",
     code: "it-IT",
     voices: [
-      ["if_sara", "Sara — Female"],
-      ["im_nicola", "Nicola — Male"],
+      ["it-IT-ElsaNeural", "Sara — Female"],
+      ["it-IT-DiegoNeural", "Nicola — Male"],
       ["it-IT-ElsaNeural", "Elsa — Female"],
       ["it-IT-IsabellaNeural", "Isabella — Female"],
       ["it-IT-DiegoNeural", "Diego — Male"],
@@ -166,10 +166,10 @@ const languages = [
     name: "Hindi",
     code: "hi-IN",
     voices: [
-      ["hf_alpha", "Alpha — Female"],
-      ["hf_beta", "Beta — Female"],
-      ["hm_omega", "Omega — Male"],
-      ["hm_psi", "Psi — Male"],
+      ["hi-IN-SwaraNeural", "Alpha — Female"],
+      ["hi-IN-SwaraNeural", "Beta — Female"],
+      ["hi-IN-MadhurNeural", "Omega — Male"],
+      ["hi-IN-MadhurNeural", "Psi — Male"],
       ["hi-IN-SwaraNeural", "Swara — Female"],
       ["hi-IN-MadhurNeural", "Madhur — Male"],
     ],
@@ -210,14 +210,14 @@ const languages = [
     name: "Chinese",
     code: "zh-CN",
     voices: [
-      ["zf_xiaobei", "Xiaobei — Female"],
-      ["zf_xiaoni", "Xiaoni — Female"],
-      ["zf_xiaoxiao", "Xiaoxiao — Female"],
-      ["zf_xiaoyi", "Xiaoyi — Female"],
-      ["zm_yunjian", "Yunjian — Male"],
-      ["zm_yunxi", "Yunxi — Male"],
-      ["zm_yunxia", "Yunxia — Male"],
-      ["zm_yunyang", "Yunyang — Male"],
+      ["zh-CN-XiaobeiNeural", "Xiaobei — Female"],
+      ["zh-CN-XiaoniNeural", "Xiaoni — Female"],
+      ["zh-CN-XiaoxiaoNeural", "Xiaoxiao — Female"],
+      ["zh-CN-XiaoyiNeural", "Xiaoyi — Female"],
+      ["zh-CN-YunjianNeural", "Yunjian — Male"],
+      ["zh-CN-YunxiNeural", "Yunxi — Male"],
+      ["zh-CN-YunxiaNeural", "Yunxia — Male"],
+      ["zh-CN-YunyangNeural", "Yunyang — Male"],
       ["zh-CN-XiaoxiaoNeural", "Xiaoxiao — Neural — Female"],
       ["zh-CN-XiaoyiNeural", "Xiaoyi — Neural — Female"],
       ["zh-CN-YunjianNeural", "Yunjian — Neural — Male"],
@@ -231,11 +231,11 @@ const languages = [
     name: "Japanese",
     code: "ja-JP",
     voices: [
-      ["jf_alpha", "Alpha — Female"],
-      ["jf_gongitsune", "Gongitsune — Female"],
-      ["jf_nezumi", "Nezumi — Female"],
-      ["jf_tebukuro", "Tebukuro — Female"],
-      ["jm_kumo", "Kumo — Male"],
+      ["ja-JP-NanamiNeural", "Alpha — Female"],
+      ["ja-JP-NanamiNeural", "Gongitsune — Female"],
+      ["ja-JP-NanamiNeural", "Nezumi — Female"],
+      ["ja-JP-NanamiNeural", "Tebukuro — Female"],
+      ["ja-JP-KeitaNeural", "Kumo — Male"],
       ["ja-JP-NanamiNeural", "Nanami — Female"],
       ["ja-JP-KeitaNeural", "Keita — Male"],
     ],
@@ -663,14 +663,30 @@ export default function Home() {
       </section>
 
       <footer className="border-t border-zinc-200 bg-white">
-        <div className="mx-auto max-w-6xl px-5 py-7 text-center text-xs text-zinc-400">
-          © 2026 AI Voice Studio
+        <div className="mx-auto max-w-6xl px-5 py-7">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-zinc-500">
+            <a href="/about" className="transition hover:text-zinc-900">About</a>
+            <a href="/how-it-works" className="transition hover:text-zinc-900">How It Works</a>
+            <a href="/languages" className="transition hover:text-zinc-900">Languages</a>
+            <a href="/faq" className="transition hover:text-zinc-900">FAQ</a>
+            <a href="/privacy" className="transition hover:text-zinc-900">Privacy</a>
+            <a href="/terms" className="transition hover:text-zinc-900">Terms</a>
+            <a href="/contact" className="transition hover:text-zinc-900">Contact</a>
+          </div>
+
+          <div className="mt-4 text-center text-xs text-zinc-400">
+            © 2026 AI Voice Studio
+          </div>
         </div>
       </footer>
 
     </main>
   );
 }
+
+
+
+
 
 
 
